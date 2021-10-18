@@ -16,7 +16,6 @@ import junit.framework.Assert;
 public class POSTRequestStepDefinition {
 	
 	ObjectFactory factory = new ObjectFactory();
-	JSONObject json;
 	private String finalresponse;
 	// Assigning the mapper as the object mapper
 	ObjectMapper mapper;
