@@ -14,7 +14,7 @@ private Properties prop;
 	public String getString(String key) throws IOException {
 		
 		prop = new Properties();
-		FileInputStream ip = new FileInputStream("C:\\Users\\vishw\\Desktop\\config.properties");
+		FileInputStream ip = new FileInputStream("src/main/java/com/env_vars/config.properties");
 		prop.load(ip);
 		return prop.getProperty(key);
 	}

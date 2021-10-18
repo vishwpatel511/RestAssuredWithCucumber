@@ -1,8 +1,11 @@
 package com.StepDefinitions;
 
+import java.io.IOException;
+
 import com.factory.ObjectFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.utils.PropReader;
 
 import POJO_Classes.POST_Repo;
 import io.cucumber.java.en.Given;
@@ -19,8 +22,9 @@ public class PATCHRequestStepDefinition {
 	// Assigning the mapper as the object mapper
 	ObjectMapper mapper;
 	//creating the object of POJO class which will help to create the request payload.
-		POST_Repo createrepo = new POST_Repo();
+	POST_Repo createrepo = new POST_Repo();
 	
+	PropReader reader = new PropReader();
 	
 	@Given("Github APIs are running and operational")
 	public void github_ap_is_are_running_and_operational() {
@@ -29,10 +33,10 @@ public class PATCHRequestStepDefinition {
 	}
 
 	@When("{string} as a token and {string} as a cookies are passed")
-	public void as_a_token_and_as_a_cookies_are_passed(String auth, String cookies) {
+	public void as_a_token_and_as_a_cookies_are_passed(String auth, String cookies) throws IOException {
 	
-		factory.setAuth(auth);
-		factory.setRequestSpecification(factory.getRequestSpecification().auth().preemptive().basic("vishwpatel511", auth).header("accept", "application/vnd.github.v3+json"));
+		factory.setAuth(reader.getString("Token"));
+		factory.setRequestSpecification(factory.getRequestSpecification().auth().preemptive().basic("vishwpatel511", factory.getAuth()).header("accept", "application/vnd.github.v3+json"));
 		
 	}
 
@@ -40,7 +44,7 @@ public class PATCHRequestStepDefinition {
 	public void is_prepared_to_update_a_repo(String payload) {
 	  
 		mapper = new ObjectMapper();
-		createrepo.setName("deletedrepo");
+		createrepo.setName("bfvuwbrvbu");
 		
 		try {
 			
@@ -59,7 +63,7 @@ public class PATCHRequestStepDefinition {
 	@When("{string} is passed as URI with the {string} and {string} is passed as endpoint and PATCH request is made")
 	public void is_passed_as_uri_with_the_and_is_passed_as_endpoint_and_patch_request_is_made(String uri, String endpoint, String reponame) {
 	   
-		System.out.println(uri + endpoint+"RandomrepoTobeDeletedupdated");
+		System.out.println(uri + endpoint+"deletedrepo");
 		factory.setResponse(factory.getRequestSpecification().patch(uri + endpoint+"RandomrepoTobeDeletedupdated"));
 		System.out.println();
 		
