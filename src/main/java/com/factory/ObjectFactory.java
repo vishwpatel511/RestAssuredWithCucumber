@@ -13,7 +13,6 @@ public class ObjectFactory {
 	private PropReader propreader;
 	private String uri;
 	private String org_endpoint;
-	private String statuscode;
 	private String auth;
 	
 	public RequestSpecification getRequestSpecification() {
@@ -40,12 +39,7 @@ public class ObjectFactory {
 	public void setOrg_endpoint(String org_endpoint) {
 		this.org_endpoint = org_endpoint;
 	}
-	public String getStatuscode() {
-		return statuscode;
-	}
-	public void setStatuscode(String statuscode2) {
-		this.statuscode = statuscode2;
-	}
+	
 	public String getAuth() {
 		return auth;
 	}
