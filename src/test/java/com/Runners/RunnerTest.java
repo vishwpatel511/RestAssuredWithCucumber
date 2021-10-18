@@ -12,7 +12,8 @@ import io.cucumber.junit.CucumberOptions;
 		plugin = {"pretty"
 		},
 		publish = true,
-		monochrome = true
+		monochrome = true,
+		tags= "@deleterepo"
 		)
 
 public class RunnerTest {
