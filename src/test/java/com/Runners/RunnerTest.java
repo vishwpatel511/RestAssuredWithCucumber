@@ -12,8 +12,7 @@ import io.cucumber.junit.CucumberOptions;
 		plugin = {"pretty"
 		},
 		publish = true,
-		monochrome = true,
-		tags= "@get or @post"
+		monochrome = true
 		)
 
 public class RunnerTest {

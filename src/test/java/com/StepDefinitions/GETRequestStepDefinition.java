@@ -35,13 +35,6 @@ public class GETRequestStepDefinition {
 		factory.setRequestSpecification(RestAssured.given());
 	}
 
-	@When("{string} and cookies are passed")
-	public void and_cookies_are_passed(String auth) {
-	
-		factory.setAuth(auth);
-		factory.setRequestSpecification(factory.getRequestSpecification().auth().basic("vishwpatel511", auth).header("accept", "application/vnd.github.v3+json"));
-	
-	}
 
 	@When("{string} is pass as URI with the necassary {string} as params and {string} as endpoint and GET request is made")
 	public void is_pass_as_uri_with_the_necassary_as_params_and_as_endpoint_and_get_request_is_made(String uri, String string2, String endpoints) throws IOException {
@@ -58,8 +51,8 @@ public class GETRequestStepDefinition {
 		factory.setResponse(factory.getResponse().andReturn());
 	}
 
-	@Then("Status code should be {string}")
-	public void status_code_should_be(String statuscode) {
+	@Then("Status code should be {int}")
+	public void status_code_should_be(int statuscode) {
 	
 		System.out.println(factory.getResponse().then().log().all());
 		Assert.assertEquals(factory.getResponse().statusCode(), 200);

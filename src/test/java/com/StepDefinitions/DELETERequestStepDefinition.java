@@ -30,18 +30,12 @@ public class DELETERequestStepDefinition {
 		
 	}
 	
-	
-	@Given("Github APIs are operational to perform actions")
-	public void github_ap_is_are_operational_to_perform_actions() {
+	@When("{string} and {string} cookies are passed")
+	public void and_cookies_are_passed(String string, String string2) throws IOException {
 	   
-		factory.setRequestSpecification(RestAssured.given());	
-	}
-
-	@When("{string} and cookies are passed for DELETE request")
-	public void and_cookies_are_passed_for_delete_request(String string) throws IOException {
-	
 		factory.setAuth(reader.getString("Token"));
 		factory.setRequestSpecification(factory.getRequestSpecification().auth().preemptive().basic("vishwpatel511", factory.getAuth()).header("accept", "application/vnd.github.v3+json"));
+		
 		
 	}
 

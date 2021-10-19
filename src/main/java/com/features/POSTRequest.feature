@@ -3,7 +3,6 @@ Feature: Testing the Github APIs using POST call
 @post @postAllRepo
 Scenario: creating new the repo on Github
 
-#Given Github APIs are up and operational
 Given Github APIs are operational
 When "auth_token" and "cookies" cookies are passed
 And "payload" is prepared

@@ -31,19 +31,7 @@ public class PATCHRequestStepDefinition {
 		this.factory = factory;
 		
 	}
-	@Given("Github APIs are running and operational")
-	public void github_ap_is_are_running_and_operational() {
-		
-		factory.setRequestSpecification(RestAssured.given());
-	}
 
-	@When("{string} as a token and {string} as a cookies are passed")
-	public void as_a_token_and_as_a_cookies_are_passed(String auth, String cookies) throws IOException {
-	
-		factory.setAuth(reader.getString("Token"));
-		factory.setRequestSpecification(factory.getRequestSpecification().auth().preemptive().basic("vishwpatel511", factory.getAuth()).header("accept", "application/vnd.github.v3+json"));
-		
-	}
 
 	@When("{string} is prepared to update a repo")
 	public void is_prepared_to_update_a_repo(String payload) {

@@ -32,27 +32,12 @@ public class POSTRequestStepDefinition {
 		this.factory = factory;
 		
 	}
-	
-	/*
-	@Given("Github APIs are up and operational")
-	public void github_ap_is_are_operational() throws IOException {
-	  
-		factory.setRequestSpecification(RestAssured.given());
-		System.out.println(reader.getString("Token"));
-	}
-	*/
-	@When("{string} and {string} cookies are passed")
-	public void and_cookies_are_passed(String auth, String cookies) throws IOException {
-		
-		factory.setAuth(reader.getString("Token"));
-		factory.setRequestSpecification(factory.getRequestSpecification().auth().preemptive().basic("vishwpatel511", factory.getAuth()).header("accept", "application/vnd.github.v3+json"));
-	}
 
 	@When("{string} is prepared")
 	public void is_prepared(String string) {
 	   
 		mapper = new ObjectMapper();
-		createrepo.setName("RandomrepoTobeDeleted007");
+		createrepo.setName("RandomrepoTobeDeleted008");
 		createrepo.setPrivate(true);
 		createrepo.setDescription("This repo is supposed to be deleted");
 		createrepo.setHasIssues(true);
