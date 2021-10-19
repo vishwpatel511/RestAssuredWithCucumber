@@ -29,9 +29,9 @@ public class GETRequestStepDefinition {
 	}
 	
 	@Given("Github APIs are operational")
-	public void github_ap_is_are_operational() {
+	public void github_ap_is_are_operational() throws InterruptedException {
 	  
-		
+		Thread.sleep(5000);
 		factory.setRequestSpecification(RestAssured.given());
 	}
 
@@ -42,25 +42,28 @@ public class GETRequestStepDefinition {
 		uri = reader.getString("URI");
 		System.out.println(uri + endpoints);
 		factory.setResponse(factory.getRequestSpecification().get(uri+endpoints));
-		System.out.println(factory.getResponse().then().log().all());
+	//	System.out.println(factory.getResponse().then().log().all());
 	}
 
 	@Then("Response is sent back by server")
 	public void response_is_sent_back_by_server() {
 	    
-		factory.setResponse(factory.getResponse().andReturn());
+//		factory.setResponse(factory.getResponse().andReturn());
 	}
 
 	@Then("Status code should be {int}")
 	public void status_code_should_be(int statuscode) {
 	
-		System.out.println(factory.getResponse().then().log().all());
+	//	System.out.println(factory.getResponse().then().log().all());
 		Assert.assertEquals(factory.getResponse().statusCode(), 200);
 		
 	}
 
 	@Then("repo namely {string} should be present")
-	public void repo_namely_should_be_present(String reponame) {
+	public void repo_namely_should_be_present(String reponame) throws IOException {
+		
+		reponame = reader.getString("RepoName");
+		System.out.println(reponame);
 		System.out.println(factory.getResponse().body().prettyPrint().contains(reponame));
 		Assert.assertTrue(factory.getResponse().body().prettyPrint().contains(reponame));
 	}

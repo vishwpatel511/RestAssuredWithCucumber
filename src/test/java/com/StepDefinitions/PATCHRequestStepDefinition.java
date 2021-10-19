@@ -63,11 +63,6 @@ public class PATCHRequestStepDefinition {
 		
 	}
 
-	@Then("response is received from the server")
-	public void response_is_received_from_the_server() {
-	  
-		factory.setResponse(factory.getResponse().then().extract().response());
-	}
 
 	@Then("response code should be {int} for PATCH request")
 	public void response_code_should_be_for_patch_request(int statuscode) {

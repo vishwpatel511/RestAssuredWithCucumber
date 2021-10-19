@@ -48,12 +48,6 @@ public class DELETERequestStepDefinition {
 		System.out.println();
 	}
 
-	@Then("Response would be sent back by server")
-	public void response_would_be_sent_back_by_server() {
-
-		factory.setResponse(factory.getResponse().then().extract().response());
-	}
-
 	@Then("Status code should be {int} for DELETE request")
 	public void status_code_should_be_for_delete_request(int statuscode) {
 		Assert.assertEquals(factory.getResponse().statusCode(), statuscode);

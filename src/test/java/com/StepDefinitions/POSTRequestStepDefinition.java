@@ -67,12 +67,7 @@ public class POSTRequestStepDefinition {
 		factory.setResponse(factory.getRequestSpecification().post(uri+endpoint));
 		System.out.println();
 	}
-	
-	@Then("Response is sent back by server for post request")
-	public void response_is_sent_back_by_server_for_post_request() {
-	    
-	factory.setResponse(factory.getResponse().then().extract().response());
-	}
+
 	
 	@Then("Status code should be {int} for post request")
 	public void status_code_should_be_for_post_request(int statuscode) {
