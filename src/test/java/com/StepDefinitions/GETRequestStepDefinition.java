@@ -7,6 +7,7 @@ import org.junit.Assert;
 import com.factory.ObjectFactory;
 import com.utils.PropReader;
 
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -27,24 +28,15 @@ public class GETRequestStepDefinition {
 		this.factory = factory;
 		
 	}
-	
-	@Given("Github APIs are operational")
-	public void github_ap_is_are_operational() throws InterruptedException {
-	  
-		Thread.sleep(5000);
-		factory.setRequestSpecification(RestAssured.given());
-	}
 
-
-	@When("{string} is pass as URI with the necassary {string} as params and {string} as endpoint and GET request is made")
-	public void is_pass_as_uri_with_the_necassary_as_params_and_as_endpoint_and_get_request_is_made(String uri, String string2, String endpoints) throws IOException {
-	
+	public void is_pass_as_uri_with_the_necassary_as_params_and_as_endpoint_and_get_request_is_made(String uri, String string2, String endpoints, Scenario sc) throws IOException {
+		
 		uri = reader.getString("URI");
 		System.out.println(uri + endpoints);
 		factory.setResponse(factory.getRequestSpecification().get(uri+endpoints));
 	//	System.out.println(factory.getResponse().then().log().all());
 	}
-
+	
 	@Then("Response is sent back by server")
 	public void response_is_sent_back_by_server() {
 	    
