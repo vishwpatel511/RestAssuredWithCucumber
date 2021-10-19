@@ -34,10 +34,10 @@ public class PATCHRequestStepDefinition {
 
 
 	@When("{string} is prepared to update a repo")
-	public void is_prepared_to_update_a_repo(String payload) {
+	public void is_prepared_to_update_a_repo(String payload) throws IOException {
 	  
 		mapper = new ObjectMapper();
-		createrepo.setName("bfvuwbrvbu");
+		createrepo.setName(reader.getString("NewName"));
 		
 		try {
 			
@@ -56,8 +56,9 @@ public class PATCHRequestStepDefinition {
 	@When("{string} is passed as URI with the {string} and {string} is passed as endpoint and PATCH request is made")
 	public void is_passed_as_uri_with_the_and_is_passed_as_endpoint_and_patch_request_is_made(String uri, String endpoint, String reponame) throws IOException {
 		uri = reader.getString("URI");
-		System.out.println(uri + endpoint+"deletedrepo");
-		factory.setResponse(factory.getRequestSpecification().patch(uri + endpoint+"RandomrepoTobeDeletedupdated"));
+		reponame = reader.getString("RepoName");
+		System.out.println(uri + endpoint+reponame);
+		factory.setResponse(factory.getRequestSpecification().patch(uri + endpoint+ reponame));
 		System.out.println();
 		
 	}

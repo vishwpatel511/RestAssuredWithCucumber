@@ -34,10 +34,10 @@ public class POSTRequestStepDefinition {
 	}
 
 	@When("{string} is prepared")
-	public void is_prepared(String string) {
+	public void is_prepared(String string) throws IOException {
 	   
 		mapper = new ObjectMapper();
-		createrepo.setName("RandomrepoTobeDeleted008");
+		createrepo.setName(reader.getString("RepoName"));
 		createrepo.setPrivate(true);
 		createrepo.setDescription("This repo is supposed to be deleted");
 		createrepo.setHasIssues(true);

@@ -40,10 +40,11 @@ public class DELETERequestStepDefinition {
 	}
 
 	@When("{string} is pass as URI with the necassary {string} as params and {string} as a repo to delete and DELETE request is made")
-	public void is_pass_as_uri_with_the_necassary_as_params_and_as_a_repo_to_delete_and_delete_request_is_made(String uri, String endpoint, String repo) throws IOException {
+	public void is_pass_as_uri_with_the_necassary_as_params_and_as_a_repo_to_delete_and_delete_request_is_made(String uri, String endpoint, String reponame) throws IOException {
 		uri = reader.getString("URI");
-		System.out.println(uri + endpoint+repo);
-		factory.setResponse(factory.getRequestSpecification().delete(uri + endpoint+repo));
+		reponame = reader.getString("NewName");
+		System.out.println(uri + endpoint+reponame);
+		factory.setResponse(factory.getRequestSpecification().delete(uri + endpoint+reponame));
 		System.out.println();
 	}
 
