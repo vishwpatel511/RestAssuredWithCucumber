@@ -15,7 +15,7 @@ import junit.framework.Assert;
 
 public class DELETERequestStepDefinition {
 
-	ObjectFactory factory = new ObjectFactory();
+	ObjectFactory factory;
 	private String finalresponse;
 	// Assigning the mapper as the object mapper
 	ObjectMapper mapper;
@@ -23,6 +23,13 @@ public class DELETERequestStepDefinition {
 	POST_Repo createrepo = new POST_Repo();
 	
 	PropReader reader = new PropReader();
+	
+	public DELETERequestStepDefinition(ObjectFactory factory) {
+		
+		this.factory = factory;
+		
+	}
+	
 	
 	@Given("Github APIs are operational to perform actions")
 	public void github_ap_is_are_operational_to_perform_actions() {
@@ -39,7 +46,8 @@ public class DELETERequestStepDefinition {
 	}
 
 	@When("{string} is pass as URI with the necassary {string} as params and {string} as a repo to delete and DELETE request is made")
-	public void is_pass_as_uri_with_the_necassary_as_params_and_as_a_repo_to_delete_and_delete_request_is_made(String uri, String endpoint, String repo) {
+	public void is_pass_as_uri_with_the_necassary_as_params_and_as_a_repo_to_delete_and_delete_request_is_made(String uri, String endpoint, String repo) throws IOException {
+		uri = reader.getString("URI");
 		System.out.println(uri + endpoint+repo);
 		factory.setResponse(factory.getRequestSpecification().delete(uri + endpoint+repo));
 		System.out.println();

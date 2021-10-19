@@ -17,7 +17,7 @@ import junit.framework.Assert;
 public class PATCHRequestStepDefinition {
 
 	
-	ObjectFactory factory = new ObjectFactory();
+	ObjectFactory factory;
 	private String finalresponse;
 	// Assigning the mapper as the object mapper
 	ObjectMapper mapper;
@@ -26,6 +26,11 @@ public class PATCHRequestStepDefinition {
 	
 	PropReader reader = new PropReader();
 	
+	public PATCHRequestStepDefinition(ObjectFactory factory) {
+		
+		this.factory = factory;
+		
+	}
 	@Given("Github APIs are running and operational")
 	public void github_ap_is_are_running_and_operational() {
 		
@@ -61,8 +66,8 @@ public class PATCHRequestStepDefinition {
 	}
 
 	@When("{string} is passed as URI with the {string} and {string} is passed as endpoint and PATCH request is made")
-	public void is_passed_as_uri_with_the_and_is_passed_as_endpoint_and_patch_request_is_made(String uri, String endpoint, String reponame) {
-	   
+	public void is_passed_as_uri_with_the_and_is_passed_as_endpoint_and_patch_request_is_made(String uri, String endpoint, String reponame) throws IOException {
+		uri = reader.getString("URI");
 		System.out.println(uri + endpoint+"deletedrepo");
 		factory.setResponse(factory.getRequestSpecification().patch(uri + endpoint+"RandomrepoTobeDeletedupdated"));
 		System.out.println();

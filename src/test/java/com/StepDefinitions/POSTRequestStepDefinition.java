@@ -18,7 +18,7 @@ import junit.framework.Assert;
 
 public class POSTRequestStepDefinition {
 	
-	ObjectFactory factory = new ObjectFactory();
+	ObjectFactory factory;
 	private String finalresponse;
 	// Assigning the mapper as the object mapper
 	ObjectMapper mapper;
@@ -27,13 +27,20 @@ public class POSTRequestStepDefinition {
 	//creating the object of POJO class which will help to create the request payload.
 	POST_Repo createrepo = new POST_Repo();
 	
+	public POSTRequestStepDefinition(ObjectFactory factory) {
+		
+		this.factory = factory;
+		
+	}
+	
+	/*
 	@Given("Github APIs are up and operational")
 	public void github_ap_is_are_operational() throws IOException {
 	  
 		factory.setRequestSpecification(RestAssured.given());
 		System.out.println(reader.getString("Token"));
 	}
-	
+	*/
 	@When("{string} and {string} cookies are passed")
 	public void and_cookies_are_passed(String auth, String cookies) throws IOException {
 		
@@ -45,7 +52,7 @@ public class POSTRequestStepDefinition {
 	public void is_prepared(String string) {
 	   
 		mapper = new ObjectMapper();
-		createrepo.setName("RandomrepoTobeDeleted001");
+		createrepo.setName("RandomrepoTobeDeleted007");
 		createrepo.setPrivate(true);
 		createrepo.setDescription("This repo is supposed to be deleted");
 		createrepo.setHasIssues(true);
@@ -68,8 +75,9 @@ public class POSTRequestStepDefinition {
 	}
 	
 	@When("{string} is passed as URI with the {string} as endpoint and POST request is made")
-	public void is_passed_as_uri_with_the_as_endpoint_and_post_request_is_made(String uri, String endpoint) {
+	public void is_passed_as_uri_with_the_as_endpoint_and_post_request_is_made(String uri, String endpoint) throws IOException {
 	  
+		uri = reader.getString("URI");
 		System.out.println(uri + endpoint);
 		factory.setResponse(factory.getRequestSpecification().post(uri+endpoint));
 		System.out.println();

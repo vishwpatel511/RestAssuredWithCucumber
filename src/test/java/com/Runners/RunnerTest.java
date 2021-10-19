@@ -13,7 +13,7 @@ import io.cucumber.junit.CucumberOptions;
 		},
 		publish = true,
 		monochrome = true,
-		tags= "@deleterepo"
+		tags= "@get or @post"
 		)
 
 public class RunnerTest {
